@@ -71,6 +71,12 @@ form button {
   border-color: #bd2130;
 }
 
+.btn-star {
+  background-image: url("../assets/star.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
 /* Style des statuts */
 .statut-en-attente {
   color: #ffc107;

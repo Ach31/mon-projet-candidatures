@@ -37,6 +37,7 @@
           <th>Lieu</th>
           <th>Statut</th>
           <th>Actions</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -48,7 +49,9 @@
           <td>
             <button ng-click="supprimerCandidature($index)" class="btn btn-danger">Supprimer</button>
             <button ng-click="modifCandidature($index, $candidature)" class="btn btn-danger">Modifier le statut</button>
-
+          </td>
+          <td>
+            <button class="btn btn-star">Star button</button>
           </td>
         </tr>
       </tbody>
