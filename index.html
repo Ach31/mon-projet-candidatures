@@ -18,7 +18,7 @@
     <form ng-submit="ajouterCandidature()">
       <input ng-model="nouvelleCandidature.entreprise" placeholder="Entreprise" required>
       <input ng-model="nouvelleCandidature.poste" placeholder="Poste" required>
-      <input ng-model="nouvelleCandidature.lien" placeholder="Lien vers l'offre">
+      <input ng-model="nouvelleCandidature.lieu" placeholder="Site du poste">
       <select ng-model="nouvelleCandidature.statut">
         <option value="En attente">En attente</option>
         <option value="Entretien">Entretien</option>
@@ -34,6 +34,7 @@
         <tr>
           <th>Entreprise</th>
           <th>Poste</th>
+          <th>Lieu</th>
           <th>Statut</th>
           <th>Actions</th>
         </tr>
@@ -42,6 +43,7 @@
         <tr ng-repeat="candidature in candidatures track by $index">
           <td>{{ candidature.entreprise }}</td>
           <td>{{ candidature.poste }}</td>
+          <td>{{ candidature.lieu }}</td>
           <td>{{ candidature.statut }}</td>
           <td>
             <button ng-click="supprimerCandidature($index)" class="btn btn-danger">Supprimer</button>
