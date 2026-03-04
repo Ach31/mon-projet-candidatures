@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<meta charset="UTF-8">
 <html ng-app="candidaturesApp">
 <head>
   <title>Gestion de mes candidatures</title>
@@ -24,6 +25,7 @@
         <option value="Refusé">Refusé</option>
       </select>
       <button type="submit" class="btn btn-primary">Ajouter</button>
+
     </form>
 
     <!-- Liste des candidatures -->
@@ -37,12 +39,14 @@
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="candidature in candidatures">
+        <tr ng-repeat="candidature in candidatures track by $index">
           <td>{{ candidature.entreprise }}</td>
           <td>{{ candidature.poste }}</td>
           <td>{{ candidature.statut }}</td>
           <td>
             <button ng-click="supprimerCandidature($index)" class="btn btn-danger">Supprimer</button>
+            <button ng-click="modifCandidature($index, $candidature)" class="btn btn-danger">Modifier le statut</button>
+
           </td>
         </tr>
       </tbody>

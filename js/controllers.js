@@ -12,4 +12,8 @@ angular.module('candidaturesApp')
     $scope.supprimerCandidature = function(index) {
       CandidaturesService.supprimerCandidature(index);
     };
+    $scope.modifCandidature = function(index, candidature) {
+      CandidaturesService.modifCandidature(index, $scope.nouvelleCandidature);
+      $scope.nouvelleCandidature = {};
+    };
   });
