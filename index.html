@@ -43,10 +43,6 @@
       </thead>
       <tbody>
       <tr ng-repeat="candidature in candidatures track by $index">
-        <td>
-          <form ng-submit="selectCandidature($index, $candidature)" id="btn-formulaire">
-          </form>
-        </td>
           <td>{{ candidature.entreprise }}</td>
           <td>{{ candidature.poste }}</td>
           <td>{{ candidature.lieu }}</td>
@@ -55,6 +51,9 @@
           <td>
             <button ng-click="supprimerCandidature($index)" class="btn btn-danger">Supprimer</button>
             <button ng-click="modifCandidature($index, $candidature)" class="btn btn-danger">Modifier le statut</button>
+            <button ng-click="selectCandidature($index, $candidature)" class="btn btn-star"></button>
+
+            </form>
           </td>
 
         </tr>
