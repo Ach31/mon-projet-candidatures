@@ -4,8 +4,8 @@ angular.module('candidaturesApp')
 
     $scope.nouvelleCandidature = {};
 
-    $scope.ajouterCandidature = function() {
-      CandidaturesService.ajouterCandidature($scope.nouvelleCandidature);
+    $scope.ajouterCandidature = function(index) {
+      CandidaturesService.ajouterCandidature($scope.nouvelleCandidature, index);
       $scope.nouvelleCandidature = {};
     };
 
@@ -14,6 +14,10 @@ angular.module('candidaturesApp')
     };
     $scope.modifCandidature = function(index, candidature) {
       CandidaturesService.modifCandidature(index, $scope.nouvelleCandidature);
+      $scope.nouvelleCandidature = {};
+    };
+    $scope.selectCandidature = function(index, candidature) {
+      CandidaturesService.selectCandidature(index, $scope.nouvelleCandidature);
       $scope.nouvelleCandidature = {};
     };
   });
