@@ -31,7 +31,7 @@ Assurez-vous que votre dossier respecte l'architecture suivante pour que l'appli
     ├── app.js          # Initialisation du module Angular
     ├── controllers.js  # Logique métier (CandidaturesCtrl)
     └── services.js     # Services de données (optionnel)
-
+```
 ## ⚙️ Installation et Lancement
 Aucune installation complexe (npm, node) n'est requise pour cette version.
 
@@ -43,5 +43,7 @@ Lancer l'application :
 bash
 -Copier
 # Si vous avez Python installé
+``` python
 python -m http.server 8000
+```
 # Puis allez sur http://localhost:8000
