@@ -40,10 +40,10 @@ Vérifier les dépendances : Assurez-vous que les dossiers css et js existent et
 Lancer l'application :
 -Ouvrez simplement le fichier index.html dans votre navigateur web.
 -Recommandation : Pour éviter les problèmes de sécurité liés aux requêtes AJAX (CORS) si vous utilisez un backend plus tard, utilisez un serveur local simple.
-bash
--Copier
+
 # Si vous avez Python installé
+-Copier
 ``` python
 python -m http.server 8000
 ```
-# Puis allez sur http://localhost:8000
+-Puis allez sur http://localhost:8000
