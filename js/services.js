@@ -3,29 +3,39 @@ angular.module('candidaturesApp')
     // Charger les candidatures depuis le localStorage
     var candidatures = JSON.parse(localStorage.getItem('candidatures')) || [];
     var star_list = [];
-    var numero = 0;
+    var list_button = [];
+    //set numero when page is reload
+    if (candidatures){
+      numero = candidatures.length;
+    }
+    //if no application: numero reset to 0
+    else {
+      numero = 0;
+    }
     this.getCandidatures = function() {
       return candidatures;
     };
 
     this.ajouterCandidature = function(candidature, index) {
-      candidatures.push(candidature);
-      console.log("candidature au poste de: "+candidature.poste+" ajoutée !");
-      //console.log(this.getCandidatures());
+ 
       candidature.starred = false;
-      btn_form = document.getElementById("btn-formulaire");
-      btn_form.innerHTML = "<button type='submit' id='star' class='btn btn-star' ng-model='nouvelleCandidature.starred'></button>"
+      candidature.num = numero;
+      console.log(index);
+      console.log(numero);
+      candidatures.push(candidature);
 
+      console.log("candidature n°"+candidature.num+" au poste de: "+candidature.poste+" ajoutée !");
       //btn = document.getElementById("star");
-      set_name = function(){
-        document.getElementById("star").setAttribute("name", index);
-      }
-      set_name();
 
-      console.log(document.getElementById("star").getAttribute("name"));
+
       this.sauvegarder();
 
+      console.log(candidatures);
+      numero +=1;
+
     };
+    
+
 
     this.modifCandidature = function(index, candidature) {
       
@@ -44,11 +54,12 @@ angular.module('candidaturesApp')
     this.selectCandidature = function(index, candidature) {
       select_app = candidatures[index];
       console.log(select_app.starred);
+      console.log(index);
       //color_elt = document.getElementById("star").style.backgroundColor;
-      btn = document.getElementById("star");
-      if (select_app.starred == false){
-        btn.id = index;
-        btn.style.backgroundColor = "yellow";
+      btn = document.getElementById(index);
+      console.log(btn.style.backgroundColor);
+      if ((select_app.starred == false) & (btn.style.backgroundColor == '')){
+        btn.style.backgroundColor = 'yellow';
         console.log("ancien etat: "+select_app.starred);
         candidature.starred = true;
         console.log("nouvel etat: "+candidature.starred);
@@ -56,17 +67,27 @@ angular.module('candidaturesApp')
         new_app.starred = candidature.starred;
         //console.log(new_app);
         star_list.push(new_app);
-        //console.log(star_list);
-
-      } else{
-        document.getElementById(index).style.backgroundColor = "white";
-        star_list.splice(index, 1);
+        star_list_idx = star_list.findIndex(element => element === new_app);
+        console.log("application added: "+new_app);
+        console.log("star list updated"+"\n");
+        console.log(star_list);
+        console.log(star_list_idx);
+      } else if ((select_app.starred == true) & (btn.style.backgroundColor == 'yellow')){
+        btn.style.backgroundColor = '';
+        console.log("ancien etat: "+select_app.starred);
         candidature.starred = false;
+        console.log("application removed: "+new_app);
+        console.log("nouvel etat: "+candidature.starred);
+        console.log(index);
+        console.log(numero);
+        star_list.splice(star_list_idx, 1);
+        console.log("star list updated"+"\n");
+        console.log(star_list);
 
       }
 
       //console.log(document.getElementById("star").style.backgroundColor);
-      console.log(candidature.starred);
+      //console.log(candidature.starred);
 
       this.sauvegarder();
     };

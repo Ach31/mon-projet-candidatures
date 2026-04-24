@@ -15,7 +15,7 @@
     <h1>Mes candidatures</h1>
 
     <!-- Formulaire d'ajout -->
-    <form ng-submit="ajouterCandidature($index)">
+    <form ng-submit="ajouterCandidature($candidature, $index)">
       <input ng-model="nouvelleCandidature.entreprise" placeholder="Entreprise" required>
       <input ng-model="nouvelleCandidature.poste" placeholder="Poste" required>
       <input ng-model="nouvelleCandidature.lieu" placeholder="Site du poste">
@@ -32,7 +32,6 @@
     <table class="table">
       <thead>
         <tr>
-          <th></th>
           <th>Entreprise</th>
           <th>Poste</th>
           <th>Lieu</th>
@@ -48,10 +47,10 @@
           <td>{{ candidature.lieu }}</td>
           <td>{{ candidature.statut }}</td>
 
-          <td>
+          <td id = "space">
             <button ng-click="supprimerCandidature($index)" class="btn btn-danger">Supprimer</button>
             <button ng-click="modifCandidature($index, $candidature)" class="btn btn-danger">Modifier le statut</button>
-            <button ng-click="selectCandidature($index, $candidature)" class="btn btn-star"></button>
+            <button ng-click="selectCandidature($index, $candidature)" class="btn btn-star" id="{{ candidature.num }}"></button>
           </td>
 
         </tr>
