@@ -20,8 +20,8 @@ angular.module('candidaturesApp')
  
       candidature.starred = false;
       candidature.num = numero;
-      console.log(index);
-      console.log(numero);
+      //console.log(index);
+      //console.log(numero);
       candidatures.push(candidature);
 
       console.log("candidature n°"+candidature.num+" au poste de: "+candidature.poste+" ajoutée !");
@@ -53,12 +53,14 @@ angular.module('candidaturesApp')
 
     this.selectCandidature = function(index, candidature) {
       select_app = candidatures[index];
-      console.log(select_app.starred);
-      console.log(index);
+      //console.log(select_app.starred);
+      //console.log(index);
+      //console.log(select_app.num);
+      //console.log(candidatures[index].num);
       //color_elt = document.getElementById("star").style.backgroundColor;
-      btn = document.getElementById(index);
-      console.log(btn.style.backgroundColor);
-      if ((select_app.starred == false) & (btn.style.backgroundColor == '')){
+      btn = document.getElementById(select_app.num);
+      //selectionner une candidature
+      if ((select_app.starred == false) & (btn.style.backgroundColor == '') & (select_app.num == candidatures[index].num)){
         btn.style.backgroundColor = 'yellow';
         console.log("ancien etat: "+select_app.starred);
         candidature.starred = true;
@@ -68,25 +70,32 @@ angular.module('candidaturesApp')
         //console.log(new_app);
         star_list.push(new_app);
         star_list_idx = star_list.findIndex(element => element === new_app);
-        console.log("application added: "+new_app);
-        console.log("star list updated"+"\n");
-        console.log(star_list);
-        console.log(star_list_idx);
-      } else if ((select_app.starred == true) & (btn.style.backgroundColor == 'yellow')){
+        console.log("candidature n°"+star_list_idx+" ajoutée à la liste des favoris");
+
+        //console.log("application added: "+new_app);
+        //console.log("star list updated"+"\n");
+        //console.log(star_list);
+        //console.log(star_list_idx);
+      } 
+      //déselectionner une candidature
+      else if ((select_app.starred == true) & (btn.style.backgroundColor == 'yellow')){
         btn.style.backgroundColor = '';
-        console.log("ancien etat: "+select_app.starred);
-        candidature.starred = false;
-        console.log("application removed: "+new_app);
-        console.log("nouvel etat: "+candidature.starred);
-        console.log(index);
-        console.log(numero);
+        //console.log("ancien etat: "+select_app.starred);
+        select_app.starred = false;
+        //console.log("application removed: "+new_app);
+        //console.log("nouvel etat: "+candidature.starred);
+        //console.log(index);
+        //console.log(numero);
+        star_list_idx = star_list.findIndex(element => element === new_app);
+        console.log("candidature n°"+star_list_idx+" retirée de la liste des favoris");
         star_list.splice(star_list_idx, 1);
-        console.log("star list updated"+"\n");
-        console.log(star_list);
+        //console.log("star list updated"+"\n");
+        //console.log(star_list);
 
       }
 
-      //console.log(document.getElementById("star").style.backgroundColor);
+      //console.log("liste des candidatures\n");
+      //console.log(candidatures);
       //console.log(candidature.starred);
 
       this.sauvegarder();
