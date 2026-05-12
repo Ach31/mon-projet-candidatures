@@ -78,11 +78,20 @@ form button {
   width: 30px;
   height: 30px;
 }
+
 .btn-star:hover{background-color:yellow;}
 /* Style des statuts */
 .statut-en-attente {
   color: #ffc107;
   font-weight: bold;
+}
+
+.btn-download {
+  background: url(../assets/download.webp) no-repeat;
+  background-size: cover;
+  font-size: 10px;
+  width: 40px;
+  height: 40px;
 }
 
 .statut-entretien {
