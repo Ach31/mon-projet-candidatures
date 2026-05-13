@@ -28,7 +28,6 @@
         <option value="Refusé">Refusé</option>
       </select>
       <button type="submit" class="btn btn-primary">Ajouter</button>
-      <button  class="btn btn-download" ng-click="telechargerBDD()"></button>
 
 
     </form>
@@ -42,7 +41,9 @@
           <th>Lieu</th>
           <th>Statut</th>
           <th>Actions</th>
-          <th></th>
+          <th>
+            <button  class="btn btn-download" ng-click="telechargerBDD()"></button>
+          </th>
         </tr>
       </thead>
       <tbody>

@@ -1,4 +1,5 @@
 angular.module('candidaturesApp')
+
   .service('CandidaturesService', function() {
     // Charger les candidatures depuis le localStorage
     var candidatures = JSON.parse(localStorage.getItem('candidatures')) || [];
@@ -30,7 +31,7 @@ angular.module('candidaturesApp')
 
 
       this.sauvegarder();
-
+      
       numero +=1;
 
     };
@@ -88,7 +89,9 @@ angular.module('candidaturesApp')
     this.telechargerBDD = function() {
       console.log("export des candidatures");
       this.sauvegarder();
+      
       //.. to be continued
+      //console.table()
     };
 
     this.sauvegarder = function() {
