@@ -8,14 +8,21 @@ Une application web simple pour suivre et gérer vos candidatures d'emploi avec 
 
 ```
 .
+
 ├── index.html          # Page principale de l'application
+├── assets/
+│   ├── download.webp   # Icone pour le boutton de téléchargement
+│   ├── star.png        # Icone pour les bouttons de sélection
 ├── js/
 │   ├── app.js          # Module AngularJS principal
 │   ├── controllers.js  # Logique des contrôleurs (inclut la gestion de la BDD SQLite)
 │   └── services.js     # Services AngularJS
 ├── css/
 │   └── style.css       # Styles personnalisés
+├── node_modules/       # Toutes les dépendances nécessaires au fonctionnement de l'application
 ├── Dockerfile          # Configuration pour Docker
+├── package-lock.json   # fichier de configuration des packages de javascript
+├── package.json        # fichier de configuration des packages de javascript
 └── README.md           # Ce fichier
 ```
 
