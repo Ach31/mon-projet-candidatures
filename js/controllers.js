@@ -104,7 +104,35 @@ angular.module('candidaturesApp')
         rows = values.map((row) =>
           Object.fromEntries(columns.map((col, i) => [col, row[i]]))
         );
-      }
+         // 3. Générer le contenu CSV
+        let csvContent = "sep=,\n";
+        // Ajouter les en-têtes (noms des colonnes)
+        csvContent += columns.join(",") + "\n";
+
+        // Ajouter chaque ligne de données
+        rows.forEach(row => {
+          const rowValues = columns.map(col => {
+            // Échapper les guillemets et les virgules dans les valeurs
+            let value = row[col];
+            if (typeof value === "string") {
+              value = `"${value.replace(/"/g, '""')}"`;
+            }
+            return value;
+          });
+          csvContent += rowValues.join(",") + "\n";
+        });
+
+        // 4. Créer un blob et déclencher le téléchargement
+        const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.setAttribute("href", url);
+        link.setAttribute("download", "candidatures.csv");
+        link.style.visibility = "hidden";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      };
       console.table(rows);
     }
     //db.exec('DELETE FROM candidatures');
